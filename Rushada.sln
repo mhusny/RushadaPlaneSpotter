@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaneSpotter.Domain", "..\..\..\OneDrive\Documents\PlaneSpotter\PlaneSpotter.Domain\PlaneSpotter.Domain.csproj", "{D6F74D78-4645-4987-8F1A-A6B752E15BA1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaneSpotter.EntityFramework", "..\..\..\OneDrive\Documents\PlaneSpotter\PlaneSpotter.EntityFramework\PlaneSpotter.EntityFramework.csproj", "{62DC58FC-EECD-43F9-97F2-844128DB0C7B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaneSpotter", "..\..\..\OneDrive\Documents\PlaneSpotter\PlaneSpotter\PlaneSpotter.csproj", "{B5F64322-5A55-4210-8BF3-F0D03738CFC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6F74D78-4645-4987-8F1A-A6B752E15BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6F74D78-4645-4987-8F1A-A6B752E15BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6F74D78-4645-4987-8F1A-A6B752E15BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6F74D78-4645-4987-8F1A-A6B752E15BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62DC58FC-EECD-43F9-97F2-844128DB0C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62DC58FC-EECD-43F9-97F2-844128DB0C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62DC58FC-EECD-43F9-97F2-844128DB0C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62DC58FC-EECD-43F9-97F2-844128DB0C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F64322-5A55-4210-8BF3-F0D03738CFC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F64322-5A55-4210-8BF3-F0D03738CFC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F64322-5A55-4210-8BF3-F0D03738CFC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F64322-5A55-4210-8BF3-F0D03738CFC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA92113B-274D-44CF-8474-DD5ECF75A13D}
+	EndGlobalSection
+EndGlobal
