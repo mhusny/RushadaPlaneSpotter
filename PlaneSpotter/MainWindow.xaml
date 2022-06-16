@@ -1,0 +1,31 @@
+﻿<Window x:Class="PlaneSpotter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:PlaneSpotter.Views"
+        xmlns:viewsmodel="clr-namespace:PlaneSpotter.ViewModel"
+        xmlns:local="clr-namespace:PlaneSpotter"
+        xmlns:custom="clr-namespace:ModalControl;assembly=ModalControl"
+        mc:Ignorable="d"
+        Title="PlaneSpotter" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewsmodel:AddViewModel}">
+            <views:AddSighting />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewsmodel:EditViewModel}">
+            <views:EditSighting />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid>
+            <custom:Modal IsOpen="{Binding IsShown}" Panel.ZIndex="1">
+                <ContentControl Margin="20" Content="{Binding CurrentModalViewModel}"/>
+            </custom:Modal>
+            
+
+
+            <views:SightingView  Margin="15" DataContext="{Binding PlaneSpotterViewModel}"/>
+        </Grid>
+    </Grid>
+</Window>
