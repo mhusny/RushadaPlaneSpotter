@@ -24,13 +24,13 @@ namespace PlaneSpotter.EntityFramework.Commands
             {
                 SightingDTO sightingDTO = new SightingDTO()
                 {
-                    PlaneID = sightingDTO.PlaneID,
-                    Planemake = sightingDTO.Planemake,
-                    Planemodel = sightingDTO.Planemodel,
-                    Planeregistration = sightingDTO.Planeregistration,
-                    Location = sightingDTO.Location,
-                    DateTime = sightingDTO.DateTime,
-                    Photo = sightingDTO.Photo,
+                    PlaneID = sighting.PlaneID,
+                    Planemake = sighting.Planemake,
+                    Planemodel = sighting.Planemodel,
+                    Planeregistration = sighting.Planeregistration,
+                    Location = sighting.Location,
+                    DateTime = sighting.DateTime,
+                    Photo = sighting.Photo,
                 };
 
                 context.sightings.Update(sightingDTO);

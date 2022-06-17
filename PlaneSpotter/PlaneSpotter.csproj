@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PlaneSpotter.Domain\PlaneSpotter.Domain.csproj" />
+    <ProjectReference Include="..\PlaneSpotter.EntityFramework\PlaneSpotter.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>
