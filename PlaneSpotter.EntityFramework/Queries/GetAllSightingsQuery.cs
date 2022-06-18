@@ -25,7 +25,7 @@ namespace PlaneSpotter.EntityFramework.Queries
             {
                 IEnumerable<SightingDTO> sightingDTO = await context.sightings.ToListAsync();
 
-                return sightingDTO.Select(x => new Sighting(x.PlaneID, x.Planemake, x.Planemodel, x.Planeregistration, x.Location, x.DateTime ,x.Photo));
+                return sightingDTO.Select(x => new Sighting(x.Id, x.Planemake, x.Planemodel, x.Planeregistration, x.Location, x.DateTime ,x.Photo));
             }
         }
     }

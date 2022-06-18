@@ -16,7 +16,7 @@ namespace PlaneSpotter.ViewModel
         public AddEditComponantViewModel AddEditComponantViewModel { get; set; }
         public EditViewModel(Sighting sighting, SightingStore sightinsStore, ModelNavigationStore modelNavigationStore)
         {
-            PlaneID = sighting.PlaneID;
+            PlaneID = sighting.Id;
 
             ICommand Edit = new EditSightingCommand(this, sightinsStore, modelNavigationStore);
             ICommand Cancell = new CloseCommand(modelNavigationStore);

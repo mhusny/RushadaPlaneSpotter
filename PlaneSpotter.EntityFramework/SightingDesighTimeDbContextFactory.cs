@@ -13,7 +13,7 @@ namespace PlaneSpotter.EntityFramework
 
         public PlaneSpotterDBContext CreateDbContext(string[] args = null)
         {
-            return new PlaneSpotterDBContext(new DbContextOptionsBuilder().UseSqlServer("Data Source =RushadaPlaneSpotter.db").Options);
+            return new PlaneSpotterDBContext(new DbContextOptionsBuilder().UseSqlServer("Data Source=HP-LAP;Initial Catalog=RushadaPlaneSpotter;User ID=sa;Password=Vx@7190").Options);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace PlaneSpotter.EntityFramework.DTO
 {
     public class SightingDTO
     {
-        public Guid PlaneID { get; set; }
+        public Guid Id { get; set; }
         public string Planemake { get; set; }
         public string Planemodel { get; set; }
         public string Planeregistration { get; set; }

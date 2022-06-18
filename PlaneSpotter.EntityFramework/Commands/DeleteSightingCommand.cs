@@ -23,7 +23,7 @@ namespace PlaneSpotter.EntityFramework.Commands
             {
                 SightingDTO sightingDTO = new SightingDTO()
                 {
-                    PlaneID = id,
+                    Id = id,
                 };
 
                 context.sightings.Remove(sightingDTO);

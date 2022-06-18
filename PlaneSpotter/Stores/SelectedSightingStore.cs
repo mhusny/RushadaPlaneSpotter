@@ -29,14 +29,26 @@ namespace PlaneSpotter.Stores
             _sightingStore = sightingStore;
 
             _sightingStore.EditSighting += _sightingStore_EditSighting;
+            _sightingStore.DeleteSighting += _sightingStore_DeleteSighting;
+        }
+
+        private void _sightingStore_DeleteSighting(Guid id)
+        {
+            if (id == SelectedSighting?.Id)
+            {
+                SelectedSighting = null;
+            }
         }
 
         private void _sightingStore_EditSighting(Sighting sighting)
         {
-            if(sighting.PlaneID == SelectedSighting?.PlaneID)
+            if(sighting.Id == SelectedSighting?.Id)
             {
                 SelectedSighting = sighting;
             }
         }
+
+       
+
     }
 }

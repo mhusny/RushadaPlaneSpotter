@@ -9,7 +9,7 @@ namespace PlaneSpotter.Domain.Model
     public class Sighting
     {
 
-        public Guid PlaneID { get;  }
+        public Guid Id { get;  }
         public string Planemake { get; }
         public string Planemodel { get; }
         public string Planeregistration { get;}
@@ -20,7 +20,7 @@ namespace PlaneSpotter.Domain.Model
 
         public Sighting(Guid planeid, string planemake, string planemodel, string planeregistration, string location, DateTime dateTime, string photo)
         {
-            PlaneID = planeid;
+            Id = planeid;
             Planemake = planemake;
             Planemodel = planemodel;
             Planeregistration = planeregistration;

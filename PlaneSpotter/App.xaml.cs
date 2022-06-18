@@ -22,33 +22,37 @@ namespace PlaneSpotter
     public partial class App : Application
     {
         public readonly ModelNavigationStore _modelNavigationStore;
-        public readonly SelectedSightingStore _selectedSightingStore;
-        public readonly SightingStore _sightingStore;
 
         private readonly SightingDbContextFactory _sightingDbContextFactory;
         private readonly iGetAllSightingsQuery _iGetAllSightingsQuery;
         private readonly iAddSightingCommand _iAddSightingCommand;
         private readonly iEditSightingCommand _iEditSightingCommand;
         private readonly iDeleteSightingCommand _iDeleteSightingCommand;
+        public readonly SightingStore _sightingStore;
+        public readonly SelectedSightingStore _selectedSightingStore;
         public App()
         {
-            string _connectionString = "Data Source =RushadaPlaneSpotter.db";
+            string _connectionString = "Data Source=HP-LAP;Initial Catalog=RushadaPlaneSpotter;User ID=sa;Password=Vx@7190";
 
             _modelNavigationStore = new ModelNavigationStore();
-            _selectedSightingStore = new SelectedSightingStore(_sightingStore);
 
-            _sightingDbContextFactory = new SightingDbContextFactory(
-                new DbContextOptionsBuilder().UseSqlServer(_connectionString).Options
-                );
+            _sightingDbContextFactory = new SightingDbContextFactory(new DbContextOptionsBuilder().UseSqlServer(_connectionString).Options);
             _iGetAllSightingsQuery = new GetAllSightingsQuery(_sightingDbContextFactory);
             _iAddSightingCommand = new AddSightingCommand(_sightingDbContextFactory);
             _iEditSightingCommand = new EditSightingCommand(_sightingDbContextFactory);
             _iDeleteSightingCommand = new DeleteSightingCommand(_sightingDbContextFactory);
 
             _sightingStore = new SightingStore(_iGetAllSightingsQuery, _iAddSightingCommand, _iEditSightingCommand, _iDeleteSightingCommand);
+
+            _selectedSightingStore = new SelectedSightingStore(_sightingStore);
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+            //for future migration
+            using (PlaneSpotterDBContext context = _sightingDbContextFactory.Create())
+            {
+                context.Database.Migrate();
+            }
             PlaneSpotterViewModel planeSpotterViewModel = new PlaneSpotterViewModel(_sightingStore, _selectedSightingStore, _modelNavigationStore);
             MainWindow = new MainWindow()
             {

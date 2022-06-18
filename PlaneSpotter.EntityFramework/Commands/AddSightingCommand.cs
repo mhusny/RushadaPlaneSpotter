@@ -25,7 +25,7 @@ namespace PlaneSpotter.EntityFramework.Commands
             {
                 SightingDTO sightingDTO = new SightingDTO()
                 {
-                    PlaneID = sighting.PlaneID,
+                    Id = sighting.Id,
                     Planemake = sighting.Planemake,
                     Planemodel = sighting.Planemodel,
                     Planeregistration = sighting.Planeregistration,

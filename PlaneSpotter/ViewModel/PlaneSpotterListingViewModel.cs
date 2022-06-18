@@ -31,6 +31,7 @@ namespace PlaneSpotter.ViewModel
             //this.sightinsStore = sightinsStore;
             //this.modelNavigationStore = modelNavigationStore;
             Edit = new OpenEditSightingCommand(this, sightinsStore, modelNavigationStore);
+            Delete = new DeleteSightingCommand(this, sightinsStore);
         }
 
         public void Update(Sighting sighting)

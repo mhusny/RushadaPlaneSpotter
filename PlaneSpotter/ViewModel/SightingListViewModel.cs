@@ -23,6 +23,7 @@ namespace PlaneSpotter.ViewModel
         private PlaneSpotterListingViewModel _planeSpotterListingViewModel;
         //private SightingStore _sightingStore;
 
+
         public PlaneSpotterListingViewModel SelectedSightingViewModel
         {
             get { return _planeSpotterListingViewModel; }
@@ -35,6 +36,8 @@ namespace PlaneSpotter.ViewModel
             }
         }
 
+        public ICommand GetAllSightingsCommand { get; }
+
         public SightingListViewModel(SightingStore sightingStore, SelectedSightingStore selectedSightingStore, ModelNavigationStore modelNavigationStore)
         {
             _sightingStore = sightingStore;
@@ -42,14 +45,56 @@ namespace PlaneSpotter.ViewModel
             _modelNavigationStore = modelNavigationStore;
             _listings  = new ObservableCollection<PlaneSpotterListingViewModel>();
 
+
+            GetAllSightingsCommand = new LoadAllSightingsCommand(sightingStore);
+            //GetAllSightingsCommand.Execute(null);
+
+            _sightingStore.SightingsLoaded += _sightingStore_GetAllSighting;
             _sightingStore.AddSighting += sightingStore_AddSighting;
             _sightingStore.EditSighting += sightingStore_EditSighting;
+            _sightingStore.DeleteSighting += sightingStore_DeleteSighting;
+        }
 
+        private void sightingStore_DeleteSighting(Guid id)
+        {
+            PlaneSpotterListingViewModel listingViewModel =  _listings.FirstOrDefault(x => x.Sighting.Id == id);
+            if (listingViewModel != null)
+            {
+                _listings.Remove(listingViewModel);
             }
+        }
+
+        private void _sightingStore_GetAllSighting()
+        {
+            _listings.Clear();
+
+            foreach (Sighting sighting in _sightingStore.Sightings)
+            {
+                AddSighting(sighting);
+            }
+        }
+
+        //facory method to exetute getall command
+        //public static SightingListViewModel LoadViewModel(SightingStore sightingStore, SelectedSightingStore selectedSightingStore, ModelNavigationStore modelNavigationStore)
+        //{
+
+        //}
+        internal class LoadViewModel : SightingListViewModel
+        {
+            public LoadViewModel(SightingStore sightingStore, SelectedSightingStore selectedSightingStore, ModelNavigationStore modelNavigationStore) : base(sightingStore, selectedSightingStore, modelNavigationStore)
+            {
+                SightingListViewModel viewModel = new SightingListViewModel(sightingStore, selectedSightingStore, modelNavigationStore);
+
+                viewModel.GetAllSightingsCommand.Execute(null);
+
+                //return viewModel;
+            }
+        }
+
 
         private void sightingStore_EditSighting(Sighting sighting)
         {
-            PlaneSpotterListingViewModel planeSpotterListing = _listings.FirstOrDefault(x => x.Sighting.PlaneID == sighting.PlaneID);
+            PlaneSpotterListingViewModel planeSpotterListing = _listings.FirstOrDefault(x => x.Sighting.Id == sighting.Id);
             if (planeSpotterListing != null)
             {
                 planeSpotterListing.Update(sighting);
@@ -72,5 +117,6 @@ namespace PlaneSpotter.ViewModel
             PlaneSpotterListingViewModel itemViewModel = new PlaneSpotterListingViewModel(sighting, _sightingStore, _modelNavigationStore);
             _listings.Add(itemViewModel);
         }
+
     }
 }

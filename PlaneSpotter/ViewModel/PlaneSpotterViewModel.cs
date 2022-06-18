@@ -17,7 +17,7 @@ namespace PlaneSpotter.ViewModel
 
         public PlaneSpotterViewModel(SightingStore sightingStore, SelectedSightingStore selectedSightingStore, ModelNavigationStore modelNavigationStore)
         {
-            SightingListViewModel = new SightingListViewModel(sightingStore, selectedSightingStore, modelNavigationStore);
+            SightingListViewModel = new SightingListViewModel.LoadViewModel(sightingStore, selectedSightingStore, modelNavigationStore);
             SightingDetailViewModel = new SightingDetailViewModel(selectedSightingStore);
 
             AddNewSighting = new OpenAddSightingCommand(sightingStore, modelNavigationStore);
