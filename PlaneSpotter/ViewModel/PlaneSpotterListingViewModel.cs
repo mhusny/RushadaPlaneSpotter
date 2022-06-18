@@ -28,8 +28,7 @@ namespace PlaneSpotter.ViewModel
         public PlaneSpotterListingViewModel(Sighting sighting, SightingStore sightinsStore, ModelNavigationStore modelNavigationStore)
         {
             Sighting = sighting;
-            //this.sightinsStore = sightinsStore;
-            //this.modelNavigationStore = modelNavigationStore;
+
             Edit = new OpenEditSightingCommand(this, sightinsStore, modelNavigationStore);
             Delete = new DeleteSightingCommand(this, sightinsStore);
         }
