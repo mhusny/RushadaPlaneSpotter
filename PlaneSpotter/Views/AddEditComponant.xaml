@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlaneSpotter.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -70,7 +71,8 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" FontWeight="Bold" Text="Date Time"/>
-                <TextBox Grid.Column="1" Text="{Binding DateTime}" Margin="5 0 0 0" MinWidth="200"/>
+                <!--<TextBox Grid.Column="1" Text="{Binding DateTime}" DefaultValue="{Binding DateTime.Now}" SelectedDate="{Binding DatenTime , StringFormat=dd-MM-yyyy hh:mm}" DisplayDate="{Binding DateTime.Now , StringFormat=dd-MM-yyyy hh:mm}"  Margin="5 0 0 0" MinWidth="200"/>-->
+                <xctk:DateTimePicker Grid.Column="1" Format="Custom" FormatString="dd/MM/yyyy HH:mm:ss"  Value="{Binding DatenTime  , StringFormat=dd/MM/yyyy HH:mm:ss}"  Text="{Binding DateTime.Now}"  HorizontalAlignment="Left" Margin="5 0 0 0" Name="DateTimePicker1" VerticalAlignment="Top" Width="200" />
             </Grid>
 
             <Grid Grid.Row="5"  Margin="10 5">

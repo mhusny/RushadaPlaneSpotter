@@ -9,7 +9,53 @@
     <Grid>
         <Border BorderThickness="0" BorderBrush="Gray">
             <Grid>
-                <ListView ItemsSource="{Binding Listings}" SelectedItem="{Binding SelectedSightingViewModel}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="0 2 0 2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Search" Grid.Column="0"/>
+                    <TextBox Grid.Column="1" Text="{Binding SearchPara}" Margin="5 0 0 0" />
+                    <Button Grid.Column="2" Content="Search" Command="{Binding SearchCommand}"/>
+                    <Button Grid.Column="3" Content="Cancel Search" Command="{Binding GetAllSightingsCommand}"/>
+                </Grid>
+
+                <ListView Grid.Row="1" ItemsSource="{Binding Listings}" SelectedItem="{Binding SelectedSightingViewModel}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="{Binding Planemake}" Grid.Column="0"/>
+                                <TextBlock Text="{Binding Planemodel}" Grid.Column="1"/>
+                                <TextBlock Text="{Binding Planeregistration}" Grid.Column="2"/>
+                                <Button Grid.Column="3" Content="Edit" Command="{Binding Edit}"/>
+                                <Button Grid.Column="4" Content="Delete" Command="{Binding Delete}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ListView Grid.Row="1" ItemsSource="{Binding Listings}" SelectedItem="{Binding SelectedSightingViewModel}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />

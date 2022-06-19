@@ -21,7 +21,7 @@ namespace PlaneSpotter.ViewModel
                 _PlaneModel = value;
                 OnPropertyChanged(nameof(PlaneModel));
                 OnPropertyChanged(nameof(ValiedForm));
-            } 
+            }
         }
 
         private string _PlaneMake;
@@ -68,7 +68,7 @@ namespace PlaneSpotter.ViewModel
         }
 
         private DateTime _DateTime;
-        public DateTime DateTime
+        public DateTime DatenTime
         {
             get
             {
@@ -77,7 +77,7 @@ namespace PlaneSpotter.ViewModel
             set
             {
                 _DateTime = value;
-                OnPropertyChanged(nameof(DateTime));
+                OnPropertyChanged(nameof(DatenTime));
             }
         }
 

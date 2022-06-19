@@ -26,7 +26,7 @@ namespace PlaneSpotter.ViewModel
                 PlaneModel = sighting.Planemodel,
                 PlaneRegistration = sighting.Planeregistration,
                 Location = sighting.Location,
-                DateTime = sighting.DateTime,
+                DatenTime = sighting.DateTime,
                 Photo = sighting.Photo
             };
         }

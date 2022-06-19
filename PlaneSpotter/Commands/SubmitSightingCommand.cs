@@ -25,7 +25,7 @@ namespace PlaneSpotter.Commands
         {
             AddEditComponantViewModel formViewModel = _addViewModel.AddEditComponantViewModel;
 
-            Sighting sighting = new Sighting(Guid.NewGuid(), formViewModel.PlaneMake, formViewModel.PlaneModel, formViewModel.PlaneRegistration, formViewModel.Location, formViewModel.DateTime, formViewModel.Photo);
+            Sighting sighting = new Sighting(Guid.NewGuid(), formViewModel.PlaneMake, formViewModel.PlaneModel, formViewModel.PlaneRegistration, formViewModel.Location, formViewModel.DatenTime, formViewModel.Photo);
 
             try
             {

@@ -12,6 +12,7 @@ namespace PlaneSpotter.Stores
     public class SightingStore
     {
         private readonly iGetAllSightingsQuery _iGetAllSightingsQuery;
+        private readonly iGetSightingByParaQuery _iGetSightingByParaQuery;
         private readonly iAddSightingCommand _iAddSightingCommand;
         private readonly iEditSightingCommand _iEditSightingCommand;
         private readonly iDeleteSightingCommand _iDeleteSightingCommand;
@@ -23,10 +24,12 @@ namespace PlaneSpotter.Stores
         public event Action<Sighting> EditSighting;
         public event Action<Guid> DeleteSighting;
         public event Action SightingsLoaded;
+        public event Action SightingsLoadedByPara;
 
-        public SightingStore(iGetAllSightingsQuery iGetAllSightingsQuery, iAddSightingCommand iAddSightingCommand, iEditSightingCommand iEditSightingCommand, iDeleteSightingCommand iDeleteSightingCommand)
+        public SightingStore(iGetAllSightingsQuery iGetAllSightingsQuery, iAddSightingCommand iAddSightingCommand, iEditSightingCommand iEditSightingCommand, iDeleteSightingCommand iDeleteSightingCommand, iGetSightingByParaQuery iGetSightingByParaQuery)
         {
             _iGetAllSightingsQuery = iGetAllSightingsQuery;
+            _iGetSightingByParaQuery = iGetSightingByParaQuery;
             _iAddSightingCommand = iAddSightingCommand;
             _iEditSightingCommand = iEditSightingCommand;
             _iDeleteSightingCommand = iDeleteSightingCommand;
@@ -38,6 +41,16 @@ namespace PlaneSpotter.Stores
         public async Task GetAllSightings()
         {
             IEnumerable<Sighting> sightings = await _iGetAllSightingsQuery.Execute();
+
+            _sightings.Clear();
+            _sightings.AddRange(sightings);
+
+            SightingsLoaded?.Invoke();
+        }
+
+        public async Task GetSightingsByPara(string SearchBy, string SearchPara)
+        {
+            IEnumerable<Sighting> sightings = await _iGetSightingByParaQuery.Execute(SearchBy, SearchPara);
 
             _sightings.Clear();
             _sightings.AddRange(sightings);

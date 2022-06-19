@@ -8,16 +8,28 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Componants\" />
+    <Compile Remove="Componants\**" />
+    <EmbeddedResource Remove="Componants\**" />
+    <None Remove="Componants\**" />
+    <Page Remove="Componants\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Views\plane1.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.3.0" />
     <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PlaneSpotter.Domain\PlaneSpotter.Domain.csproj" />
     <ProjectReference Include="..\PlaneSpotter.EntityFramework\PlaneSpotter.EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\plane1.jpg" />
   </ItemGroup>
 
 </Project>
