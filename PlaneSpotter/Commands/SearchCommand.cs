@@ -10,21 +10,17 @@ namespace PlaneSpotter.Commands
     public class SearchCommand : AsyncCommandBase
     {
         private readonly SightingStore _sightingStore;
-        private readonly string _searchBy;
-        private readonly string _searchPara;
 
-        public SearchCommand(SightingStore sightingStore, string searchBy, string searchPara)
+        public SearchCommand(SightingStore sightingStore)
         {
             _sightingStore = sightingStore;
-            _searchBy = searchBy;
-            _searchPara = searchPara;
         }
 
         public override async Task ExecuteAsync(object parameter)
         {
             try
             {
-                await _sightingStore.GetSightingsByPara(_searchBy, _searchPara);
+                await _sightingStore.GetSightingsByPara();
             }
             catch (Exception)
             {

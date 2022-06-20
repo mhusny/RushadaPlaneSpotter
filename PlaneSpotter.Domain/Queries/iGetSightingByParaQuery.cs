@@ -10,6 +10,6 @@ namespace PlaneSpotter.Domain.Queries
     public interface iGetSightingByParaQuery
     {
 
-        Task<IEnumerable<Sighting>> Execute(string searchBy, string searchPara);
+        Task<IEnumerable<Sighting>> Execute();
     }
 }

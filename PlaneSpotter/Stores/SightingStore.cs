@@ -29,10 +29,10 @@ namespace PlaneSpotter.Stores
         public SightingStore(iGetAllSightingsQuery iGetAllSightingsQuery, iAddSightingCommand iAddSightingCommand, iEditSightingCommand iEditSightingCommand, iDeleteSightingCommand iDeleteSightingCommand, iGetSightingByParaQuery iGetSightingByParaQuery)
         {
             _iGetAllSightingsQuery = iGetAllSightingsQuery;
-            _iGetSightingByParaQuery = iGetSightingByParaQuery;
             _iAddSightingCommand = iAddSightingCommand;
             _iEditSightingCommand = iEditSightingCommand;
             _iDeleteSightingCommand = iDeleteSightingCommand;
+            _iGetSightingByParaQuery = iGetSightingByParaQuery;
 
             _sightings = new List<Sighting>();
         }
@@ -48,14 +48,14 @@ namespace PlaneSpotter.Stores
             SightingsLoaded?.Invoke();
         }
 
-        public async Task GetSightingsByPara(string SearchBy, string SearchPara)
+        public async Task GetSightingsByPara()
         {
-            IEnumerable<Sighting> sightings = await _iGetSightingByParaQuery.Execute(SearchBy, SearchPara);
+            IEnumerable<Sighting> sightings = await _iGetSightingByParaQuery.Execute();
 
             _sightings.Clear();
             _sightings.AddRange(sightings);
 
-            SightingsLoaded?.Invoke();
+            SightingsLoadedByPara?.Invoke();
         }
 
         public async Task add(Sighting sighting) 

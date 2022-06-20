@@ -17,7 +17,6 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" FontSize="22" Text="Detail"  Margin="10 10"/>
@@ -71,25 +70,15 @@
                     <TextBlock Grid.Column="0" FontWeight="Bold" Text="Date Time"/>
                     <TextBlock Grid.Column="1" Text="{Binding Datetime}" Margin="5 0 0 0"/>
                 </Grid>
-
+                
                 <Grid Grid.Row="6"  Margin="10 5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"  SharedSizeGroup="label"/>
                         <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="0" FontWeight="Bold" Text="Path"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Photo}" Margin="5 0 0 0"/>
-                </Grid>
-
-                <Grid Grid.Row="7"  Margin="10 5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"  SharedSizeGroup="label"/>
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-
                     <TextBlock Grid.Column="0" FontWeight="Bold" Text="Photo"/>
-                    <Image Source="/Views/plane1.jpg" Grid.Column="1" x:Name="img1" Width="100" Height="100" Stretch="Fill" ></Image>
+                    <Image Source="{Binding Photo}" Grid.Column="1" x:Name="img1" Width="100" Height="100" Stretch="Fill" ></Image>
                 </Grid>
             </Grid>
         </Border>

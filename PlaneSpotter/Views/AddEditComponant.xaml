@@ -82,7 +82,13 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" FontWeight="Bold" Text="Photo"/>
-                <TextBox Grid.Column="1" Text="{Binding Photo}" Margin="5 0 0 0" MinWidth="200"/>
+                <!--<TextBox Grid.Column="1" Text="{Binding Photo}" Margin="5 0 0 0" MinWidth="200"/>-->
+                <DockPanel Margin="5 0 0 0" Grid.Column="1">
+                    <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,0,0,10">
+                        <Button Name="btnOpenFile" Click="btnOpenFile_Click">Open file</Button>
+                    </WrapPanel>
+                    <TextBox Name="txtEditor"  Visibility="Collapsed"  Text="{Binding Photo , UpdateSourceTrigger=PropertyChanged}"/>
+                </DockPanel>
             </Grid>
         </Grid>
 

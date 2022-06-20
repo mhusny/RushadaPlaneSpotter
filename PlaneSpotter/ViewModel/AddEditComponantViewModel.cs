@@ -83,8 +83,6 @@ namespace PlaneSpotter.ViewModel
 
         private string _Photo;
 
-
-
         public string Photo
         {
             get

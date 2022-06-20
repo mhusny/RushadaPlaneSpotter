@@ -54,7 +54,7 @@ namespace PlaneSpotter.ViewModel
         }
 
         public ICommand GetAllSightingsCommand { get; }
-        public ICommand SearchCommand { get; }
+        public ICommand SearchCommand { get; set; }
 
         public SightingListViewModel(SightingStore sightingStore, SelectedSightingStore selectedSightingStore, ModelNavigationStore modelNavigationStore, ICommand search)
         {
@@ -63,30 +63,30 @@ namespace PlaneSpotter.ViewModel
             _modelNavigationStore = modelNavigationStore;
             _listings  = new ObservableCollection<PlaneSpotterListingViewModel>();
 
-            
 
+
+            SearchCommand = new SearchCommand(sightingStore);
             GetAllSightingsCommand = new LoadAllSightingsCommand(sightingStore);
 
             //GetAllSightingsCommand.Execute(null);
 
             _sightingStore.SightingsLoaded += _sightingStore_GetAllSighting;
-            _sightingStore.SightingsLoadedByPara += _sightingStore_GetSightingByPara;
             _sightingStore.AddSighting += sightingStore_AddSighting;
             _sightingStore.EditSighting += sightingStore_EditSighting;
             _sightingStore.DeleteSighting += sightingStore_DeleteSighting;
+            _sightingStore.SightingsLoadedByPara += _sightingStore_GetSightingByPara;
         }
 
-        private void _sightingStore_GetSightingByPara(SightingStore sightingStore)
+        private void _sightingStore_GetSightingByPara()
         {
             _listings.Clear();
 
-            SearchCommand = new SearchCommand(sightingStore, "", SearchPara);
-
-
-
             foreach (Sighting sighting in _sightingStore.Sightings)
             {
-                AddSighting(sighting);
+                if (sighting.Planemake == SearchPara || sighting.Planemodel == SearchPara || sighting.Planeregistration == SearchPara)
+                {
+                    AddSighting(sighting);
+                }
             }
         }
 
@@ -103,9 +103,11 @@ namespace PlaneSpotter.ViewModel
         {
             _listings.Clear();
 
+
+
             foreach (Sighting sighting in _sightingStore.Sightings)
             {
-                AddSighting(sighting);
+                    AddSighting(sighting);
             }
         }
 

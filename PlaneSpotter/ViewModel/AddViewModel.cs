@@ -18,7 +18,5 @@ namespace PlaneSpotter.ViewModel
             ICommand Submit = new SubmitSightingCommand(this, sightingStore, modelNavigationStore);
             AddEditComponantViewModel = new AddEditComponantViewModel(Submit, Cancell);
         }
-
-
     }
 }

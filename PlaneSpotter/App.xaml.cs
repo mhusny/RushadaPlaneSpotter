@@ -42,7 +42,7 @@ namespace PlaneSpotter
 
             _sightingDbContextFactory = new SightingDbContextFactory(new DbContextOptionsBuilder().UseSqlServer(_connectionString).Options);
             _iGetAllSightingsQuery = new GetAllSightingsQuery(_sightingDbContextFactory);
-            _iGetSightingByParaQuery = new GetSightingByParaQuery(_sightingDbContextFactory, _searchBy, _searchPara);
+            _iGetSightingByParaQuery = new GetSightingByParaQuery(_sightingDbContextFactory);
             _iAddSightingCommand = new AddSightingCommand(_sightingDbContextFactory);
             _iEditSightingCommand = new EditSightingCommand(_sightingDbContextFactory);
             _iDeleteSightingCommand = new DeleteSightingCommand(_sightingDbContextFactory);
