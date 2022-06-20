@@ -34,7 +34,7 @@ namespace PlaneSpotter.ViewModel
         public bool IsSightingSelected => SelectedSighting != null;
         public string Planemake => SelectedSighting?.Planemake ?? "";
         public string Planemodel => SelectedSighting?.Planemodel ?? "";
-        public string Planeregitration => SelectedSighting?.Planeregistration ?? "";
+        public object Planeregitration => SelectedSighting?.Planeregistration ?? "";
         public string Location => SelectedSighting?.Location ?? "";
         public DateTime Datetime => SelectedSighting?.DateTime ?? DateTime.Now;
         public string Photo => SelectedSighting?.Photo ?? "";
