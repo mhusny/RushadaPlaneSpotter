@@ -9,6 +9,23 @@ namespace PlaneSpotter.ViewModel
 {
     public class AddEditComponantViewModel : ViewModelBase
     {
+        private string _ErrorMsg;
+        public string ErrorMsg
+        {
+            get
+            {
+                return _ErrorMsg;
+            }
+            set
+            {
+                _ErrorMsg = value;
+                OnPropertyChanged(nameof(ErrorMsg));
+                OnPropertyChanged(nameof(HasError));
+            }
+        }
+
+        public bool HasError => ErrorMsg != null;
+
         private string _PlaneModel;
         public string PlaneModel 
         {
@@ -42,24 +59,37 @@ namespace PlaneSpotter.ViewModel
         private string _PlaneRegistration;
         public string PlaneRegistration
         {
+
             get
             {
                 return _PlaneRegistration;
             }
             set
             {
+                ErrorMsg = null;
+
                 string[] strings = value.Split('-');
-                if (value.Length >= 3 && value.Length <= 8)
+
+                if (strings.Count() == 2)
                 {
-                    for (int i = 0; i < value.Length; i++)
+                    if ((strings[0].Length > 0 && strings[0].Length < 3) && ((strings[1].Length > 0 && strings[1].Length < 6)))
                     {
-                        if ((value.IndexOf('-') == 1 || value.IndexOf('-') == 2))
-                        {
-                            _PlaneRegistration = value;
-                            OnPropertyChanged(nameof(PlaneRegistration));
-                            OnPropertyChanged(nameof(ValiedForm));
-                        }
+                        _PlaneRegistration = value;
+                        OnPropertyChanged(nameof(PlaneRegistration));
+                        OnPropertyChanged(nameof(ValiedForm));
                     }
+                    else
+                    {
+                        ErrorMsg = "Invalied Lenght.";
+                        _PlaneRegistration = null;
+                        OnPropertyChanged(nameof(ValiedForm));
+                    }
+                }
+                else
+                {
+                    ErrorMsg = "Invalied Format.";
+                    _PlaneRegistration = null;
+                    OnPropertyChanged(nameof(ValiedForm));
                 }
             }
         }
@@ -83,11 +113,11 @@ namespace PlaneSpotter.ViewModel
         {
             get
             {
-                return _DateTime;
+                return Convert.ToDateTime(_DateTime);
             }
             set
             {
-                _DateTime = value;
+                _DateTime = Convert.ToDateTime(value);
                 OnPropertyChanged(nameof(DatenTime));
                 OnPropertyChanged(nameof(ValiedForm));
             }

@@ -38,5 +38,6 @@ namespace PlaneSpotter.Views
                 txtEditor.Text = openFileDialog.FileName;
             }
         }
+
     }
 }

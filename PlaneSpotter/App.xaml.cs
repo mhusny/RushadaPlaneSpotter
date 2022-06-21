@@ -36,7 +36,8 @@ namespace PlaneSpotter
 
         public App()
         {
-            string _connectionString = "Data Source=HP-LAP;Initial Catalog=RushadaPlaneSpotter;User ID=sa;Password=Vx@7190";
+            //string _connectionString = "Data Source=HP-LAP;Initial Catalog=RushadaPlaneSpotter;User ID=sa;Password=Vx@7190";
+            string _connectionString = "Data Source=DELLWORK\\SQLEXPRESS;Initial Catalog=RushadaPlaneSpotter;User ID=sa;Password=Vx@7190";
 
             _modelNavigationStore = new ModelNavigationStore();
 
